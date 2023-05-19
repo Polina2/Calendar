@@ -32,7 +32,6 @@ Cal.prototype.showCurr = function() {
   this.showMonth(this.currYear, this.currMonth);
 };
 Cal.prototype.showMonth = function(y, m) {
-  let d = new Date()
   let firstDayOfMonth = new Date(y, m, 7).getDay()
   let lastDateOfMonth =  new Date(y, m+1, 0).getDate()
   let lastDayOfLastMonth = m == 0 ? new Date(y-1, 11, 0).getDate() : new Date(y, m, 0).getDate();
@@ -64,9 +63,11 @@ Cal.prototype.showMonth = function(y, m) {
     let chkY = chk.getFullYear();
     let chkM = chk.getMonth();
     if (chkY == this.currYear && chkM == this.currMonth && i == this.currDay) {
-      html += '<td class="today">' + i + '</td>';
+      let date = i + '.' + m + '.' + y
+      html += '<td class="today"><a href="http://localhost:5000/index/'+date+'">' + i + '</a></td>';
     } else {
-      html += '<td class="normal">' + i + '</td>';
+      let date = i + '.' + m + '.' + y
+      html += '<td class="normal"><a href="http://localhost:5000/index/'+date+'">' + i + '</a></td>';
     }
     if (dow == 0) {
       html += '</tr>';

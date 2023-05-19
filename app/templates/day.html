@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+
+{% block content %}
+<div class="calendar-wrapper">
+    <table>
+        <thead><tr><td>{{month}} {{year}}</td></tr></thead>
+        {% for event in events %}
+        <tr>{{event.time}} - {{event.name}}</tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
