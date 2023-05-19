@@ -2,12 +2,23 @@
 {% extends "index.html" %}
 
 {% block content %}
+<meta id="date" data-date={{date}}>
 <div class="calendar-wrapper">
     <table>
         <thead><tr><td>{{day}} {{month}} {{year}}</td></tr></thead>
         {% for event in events %}
-        <tr>{{event.time}} - {{event.name}}</tr>
+        <tr><td>{{event.time}} - {{event.name}}</td></tr>
         {% endfor %}
     </table>
+    <script>
+        let link = "http://localhost:5000/index/" + document.getElementById("date").value;
+        document.form.action = link;
+    </script>
+<form name="form" method="post">
+    <input type="text" name="time" pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"/>
+    <input type="text" name="name"/>
+    <input type="submit" value="Добавить"/>
+</form>
 </div>
+
 {% endblock %}
