@@ -9,7 +9,7 @@ let Cal = function(divId) {
   this.currDay = d.getDate();
 };
 Cal.prototype.nextMonth = function() {
-  if (this.currMonth == 11) {
+  if (this.currMonth === 11) {
     this.currMonth = 0;
     this.currYear = this.currYear + 1;
   }
@@ -19,7 +19,7 @@ Cal.prototype.nextMonth = function() {
   this.showCurr();
 };
 Cal.prototype.previousMonth = function() {
-  if (this.currMonth == 0) {
+  if (this.currMonth === 0) {
     this.currMonth = 11;
     this.currYear = this.currYear - 1;
   }
@@ -34,7 +34,7 @@ Cal.prototype.showCurr = function() {
 Cal.prototype.showMonth = function(y, m) {
   let firstDayOfMonth = new Date(y, m, 7).getDay()
   let lastDateOfMonth =  new Date(y, m+1, 0).getDate()
-  let lastDayOfLastMonth = m == 0 ? new Date(y-1, 11, 0).getDate() : new Date(y, m, 0).getDate();
+  let lastDayOfLastMonth = m === 0 ? new Date(y-1, 11, 0).getDate() : new Date(y, m, 0).getDate();
 
   let html = '<table>';
   html += '<thead><tr>';
@@ -48,10 +48,10 @@ Cal.prototype.showMonth = function(y, m) {
   let i=1;
   do {
     let dow = new Date(y, m, i).getDay();
-    if (dow == 1) {
+    if (dow === 1) {
       html += '<tr>';
     }
-    else if (i == 1) {
+    else if (i === 1) {
       html += '<tr>';
       let k = lastDayOfLastMonth - firstDayOfMonth+1;
       for(let j=0; j < firstDayOfMonth; j++) {
@@ -62,17 +62,17 @@ Cal.prototype.showMonth = function(y, m) {
     let chk = new Date();
     let chkY = chk.getFullYear();
     let chkM = chk.getMonth();
-    if (chkY == this.currYear && chkM == this.currMonth && i == this.currDay) {
+    if (chkY === this.currYear && chkM === this.currMonth && i === this.currDay) {
       let date = i + '.' + m + '.' + y
       html += '<td class="today"><a href="http://localhost:5000/index/'+date+'">' + i + '</a></td>';
     } else {
       let date = i + '.' + m + '.' + y
       html += '<td class="normal"><a href="http://localhost:5000/index/'+date+'">' + i + '</a></td>';
     }
-    if (dow == 0) {
+    if (dow === 0) {
       html += '</tr>';
     }
-    else if (i == lastDateOfMonth) {
+    else if (i === lastDateOfMonth) {
       let k=1;
       for(dow; dow < 7; dow++) {
         html += '<td class="not-current">' + k + '</td>';

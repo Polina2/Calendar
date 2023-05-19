@@ -4,7 +4,7 @@
 {% block content %}
 <div class="calendar-wrapper">
     <table>
-        <thead><tr><td>{{month}} {{year}}</td></tr></thead>
+        <thead><tr><td>{{day}} {{month}} {{year}}</td></tr></thead>
         {% for event in events %}
         <tr>{{event.time}} - {{event.name}}</tr>
         {% endfor %}

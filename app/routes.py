@@ -12,8 +12,8 @@ def index():
 @app.route('/index/<date>')
 def day(date):
     d, m, y = date.split('.')
-    months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
-      'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+    months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня',
+      'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря']
     m = months[int(m)]
     events = []
-    return render_template('day.html', month=m, year=y, events=events)
+    return render_template('day.html', day=d, month=m, year=y, events=events)
